@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <title>Ticket Bewerken</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="container mt-4">
+    <div class="card">
+        <div class="card-body">
+            <h3 class="card-title mb-3">Ticket Bewerken / Aanmaken</h3>
+
+            <div class="mb-3">
+                <label>Titel</label>
+                <input id="title" class="form-control" type="text" placeholder="Title bewerken">
+            </div>
+
+            <div class="mb-3">
+                <label>Beschrijving</label>
+                <textarea id="description" class="form-control" placeholder="Beschrijving bewerken"></textarea>
+            </div>
+
+            <div class="mb-3 row">
+                <div class="col">
+                    <label>Status</label>
+                    <select id="status" class="form-select">
+                        <option value="Open">Open</option>
+                        <option value="InProgress">In Progress</option>
+                        <option value="Closed">Closed</option>
+                    </select>
+                </div>
+
+                <div class="col">
+                    <label>Prioriteit</label>
+                    <select id="priority" class="form-select" placeholder="Prioriteit aanpassen">
+                        <option value="Low">Low</option>
+                        <option value="Medium">Medium</option>
+                        <option value="High">High</option>
+                    </select>
+                </div>
+
+                <div class="col" id="assignedCol" style="display:none">
+                    <label>Assigned To</label>
+                    <select id="assignedTo" class="form-select" placeholder="assigned to"></select>
+                </div>
+            </div>
+
+            <button id="saveTicketBtn" class="btn btn-primary" type="button">Opslaan</button>
+            <button class="btn btn-secondary" onclick="history.back()" type="button">Annuleren</button>
+        </div>
+    </div>
+</div>
+
+<script src="script.js"></script>
+<script src="ticketScript.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

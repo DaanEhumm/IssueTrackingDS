@@ -8,6 +8,21 @@ var connectionString = builder.Configuration.GetConnectionString("DefaultConnect
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
 
+
+var MyAllowSpecificOrigins = "AllowLocalhost";
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowLocalhost",
+        policy =>
+        {
+            policy.WithOrigins("http://127.0.0.1:5500")
+                  .AllowAnyHeader()
+                  .AllowAnyMethod();
+        });
+});
+
+
 // Alleen controllers, geen razor pages
 builder.Services.AddControllers()
     .AddJsonOptions(options =>
@@ -27,6 +42,7 @@ if (!app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
+app.UseCors(MyAllowSpecificOrigins);
 app.UseRouting();
 app.UseAuthorization();
 

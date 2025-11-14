@@ -1,11 +1,24 @@
 ### GET alle tickets
 GET http://localhost:5204/api/tickets
 
-### GET Admin overzicht
+### GET Admin overzicht tickets (Admin)
 GET http://localhost:5204/api/tickets?userRole=admin
 
-### GET gebruikers overzicht (eigen tickets)
+### GET Overzicht van eigen tickets (User)
 GET http://localhost:5204/api/tickets?userRole=user&userId=1
+
+### GET overzicht alle gebruikers (Admin)
+GET http://localhost:5204/api/users?userRole=admin
+
+### POST registreer nieuwe gerbuiker
+POST http://localhost:5204/api/users/register
+Content-Type: application/json
+
+{
+  "username": "daan",
+  "password": "1234",
+  "role": "admin"
+}
 
 ### POST nieuw ticket
 POST http://localhost:5204/api/tickets
