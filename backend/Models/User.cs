@@ -11,19 +11,19 @@ namespace IssueTrackingDS.Models
 
         [Required]
         [MaxLength(50)]
-        public string Username { get; set; }
+        public string? Username { get; set; }
 
         [Required]
         [MaxLength(255)]
-        public string PasswordHash { get; set; }
+        public string? PasswordHash { get; set; }
 
         [Required]
         [EnumDataType(typeof(UserRole))]
         public UserRole Role { get; set; }
 
         // Navigatie property: een gebruiker kan meerdere tickets aanmaken
-        public ICollection<Ticket> CreatedTickets { get; set; }
-        public ICollection<Ticket> AssignedTickets { get; set; }
+        public ICollection<Ticket>? CreatedTickets { get; set; }
+        public ICollection<Ticket>? AssignedTickets { get; set; }
     }
 
     public enum UserRole

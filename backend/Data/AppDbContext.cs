@@ -16,18 +16,32 @@ namespace IssueTrackingDS.Data
         {
             base.OnModelCreating(modelBuilder);
 
-            // Configureer ENUMs als strings in database
-            modelBuilder.Entity<User>()
-                .Property(u => u.Role)
-                .HasConversion<string>();
+    // Configure ENUMs als strings
+    modelBuilder.Entity<User>()
+        .Property(u => u.Role)
+        .HasConversion<string>();
 
-            modelBuilder.Entity<Ticket>()
-                .Property(t => t.Status)
-                .HasConversion<string>();
+    modelBuilder.Entity<Ticket>()
+        .Property(t => t.Status)
+        .HasConversion<string>();
 
-            modelBuilder.Entity<Ticket>()
-                .Property(t => t.Priority)
-                .HasConversion<string>();
-        }
+    modelBuilder.Entity<Ticket>()
+        .Property(t => t.Priority)
+        .HasConversion<string>();
+
+    // 🔹 Configureer AssignedUser relatie
+    modelBuilder.Entity<Ticket>()
+        .HasOne(t => t.AssignedUser)
+        .WithMany(u => u.AssignedTickets)
+        .HasForeignKey(t => t.AssignedTo)
+        .OnDelete(DeleteBehavior.SetNull);
+
+    // 🔹 Configureer Creator relatie
+    modelBuilder.Entity<Ticket>()
+        .HasOne(t => t.Creator)
+        .WithMany(u => u.CreatedTickets)
+        .HasForeignKey(t => t.CreatedBy)
+        .OnDelete(DeleteBehavior.Cascade);
+}
     }
 }

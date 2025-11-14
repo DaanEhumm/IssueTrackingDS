@@ -1,0 +1,32 @@
+### GET alle tickets
+GET http://localhost:5204/api/tickets
+
+### POST nieuw ticket
+POST http://localhost:5204/api/tickets
+Content-Type: application/json
+
+{
+  "title": "Test Ticket",
+  "description": "Eerste ticket via VSCode",
+  "status": "Open",
+  "priority": "Low",
+  "createdBy": 1,
+  "assignedTo": null
+}
+
+### PUT ticket bijwerken
+PUT http://localhost:5204/api/tickets/7
+Content-Type: application/json
+
+{
+  "ticketID": 7,
+  "title": "Aangepast ticket",
+  "description": "Nu met update",
+  "status": "InProgress",
+  "priority": "Medium",
+  "assignedTo": null,
+  "createdBy": 1
+}
+
+### DELETE ticket
+DELETE http://localhost:5204/api/tickets/7?isAdmin=true

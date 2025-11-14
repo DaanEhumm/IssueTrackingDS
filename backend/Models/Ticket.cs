@@ -11,27 +11,25 @@ namespace IssueTrackingDS.Models
 
         [Required]
         [MaxLength(100)]
-        public string Title { get; set; }
+        public string? Title { get; set; }
 
         [Required]
-        public string Description { get; set; }
+        public string? Description { get; set; }
 
         [Required]
-        [EnumDataType(typeof(TicketStatus))]
         public TicketStatus Status { get; set; } = TicketStatus.Open;
 
         [Required]
-        [EnumDataType(typeof(TicketPriority))]
         public TicketPriority Priority { get; set; } = TicketPriority.Low;
 
         // Foreign Keys
         public int? AssignedTo { get; set; }
         [ForeignKey("AssignedTo")]
-        public User AssignedUser { get; set; }
+        public User? AssignedUser { get; set; }
 
         public int CreatedBy { get; set; }
         [ForeignKey("CreatedBy")]
-        public User Creator { get; set; }
+        public User? Creator { get; set; }
 
         public DateTime CreatedAt { get; set; } = DateTime.Now;
         public DateTime UpdatedAt { get; set; } = DateTime.Now;
