@@ -1,6 +1,12 @@
 ### GET alle tickets
 GET http://localhost:5204/api/tickets
 
+### GET Admin overzicht
+GET http://localhost:5204/api/tickets?userRole=admin
+
+### GET gebruikers overzicht (eigen tickets)
+GET http://localhost:5204/api/tickets?userRole=user&userId=1
+
 ### POST nieuw ticket
 POST http://localhost:5204/api/tickets
 Content-Type: application/json
@@ -14,7 +20,7 @@ Content-Type: application/json
   "assignedTo": null
 }
 
-### PUT ticket bijwerken
+### PUT ticket bijwerken 
 PUT http://localhost:5204/api/tickets/7
 Content-Type: application/json
 
@@ -27,6 +33,15 @@ Content-Type: application/json
   "assignedTo": null,
   "createdBy": 1
 }
+
+### PUT ticket prioriteit aanpassen (Admim)
+PUT http://localhost:5204/api/tickets/5/priority?userRole=admin
+Content-Type: application/json
+
+"High"
+
+### PUT ticket Toewijzen (Admin)
+PUT http://localhost:5204/api/tickets/5/assign/3?userRole=admin
 
 ### DELETE ticket
 DELETE http://localhost:5204/api/tickets/7?isAdmin=true
