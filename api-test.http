@@ -15,9 +15,9 @@ POST http://localhost:5204/api/users/register
 Content-Type: application/json
 
 {
-  "username": "daan",
-  "password": "1234",
-  "role": "admin"
+  "username": "DaanTest123",
+  "password": "testtest123",
+  "role": "user"
 }
 
 ### POST nieuw ticket
@@ -58,3 +58,13 @@ PUT http://localhost:5204/api/tickets/5/assign/3?userRole=admin
 
 ### DELETE ticket
 DELETE http://localhost:5204/api/tickets/7?isAdmin=true
+
+### Create Admin User (secure)
+POST http://localhost:5204/api/users/create-admin?key=BeveiligingAdminAccountTest123
+Content-Type: application/json
+
+{
+  "username": "DaanAdmin",
+  "password": "AdminAccountDaanTest123",
+  "role": "admin"
+}

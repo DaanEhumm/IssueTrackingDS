@@ -8,22 +8,22 @@
 </head>
 <body>
 <div class="container mt-4">
-    <div class="card">
+    <div class="card shadow-sm">
         <div class="card-body">
-            <h3 class="card-title mb-3">Ticket Bewerken / Aanmaken</h3>
+            <h3 class="card-title mb-3" id="ticketTitle">Ticket Bewerken / Aanmaken</h3>
 
             <div class="mb-3">
                 <label>Titel</label>
-                <input id="title" class="form-control" type="text" placeholder="Title bewerken">
+                <input id="title" class="form-control" type="text" placeholder="Titel">
             </div>
 
             <div class="mb-3">
                 <label>Beschrijving</label>
-                <textarea id="description" class="form-control" placeholder="Beschrijving bewerken"></textarea>
+                <textarea id="description" class="form-control" placeholder="Beschrijving"></textarea>
             </div>
 
             <div class="mb-3 row">
-                <div class="col">
+                <div class="col-md-4">
                     <label>Status</label>
                     <select id="status" class="form-select">
                         <option value="Open">Open</option>
@@ -32,23 +32,26 @@
                     </select>
                 </div>
 
-                <div class="col">
+                <div class="col-md-4">
                     <label>Prioriteit</label>
-                    <select id="priority" class="form-select" placeholder="Prioriteit aanpassen">
+                    <select id="priority" class="form-select">
                         <option value="Low">Low</option>
                         <option value="Medium">Medium</option>
                         <option value="High">High</option>
                     </select>
                 </div>
 
-                <div class="col" id="assignedCol" style="display:none">
+                <div class="col-md-4" id="assignedCol" style="display:none">
                     <label>Assigned To</label>
-                    <select id="assignedTo" class="form-select" placeholder="assigned to"></select>
+                    <select id="assignedTo" class="form-select"></select>
                 </div>
             </div>
 
-            <button id="saveTicketBtn" class="btn btn-primary" type="button">Opslaan</button>
-            <button class="btn btn-secondary" onclick="history.back()" type="button">Annuleren</button>
+            <div class="d-flex gap-2">
+                <button id="saveTicketBtn" class="btn btn-primary" type="button">Opslaan</button>
+                <button id="cancelBtn" class="btn btn-secondary" type="button">Annuleren</button>
+                <button id="deleteBtn" class="btn btn-danger ms-auto" type="button" style="display:none">Verwijderen</button>
+            </div>
         </div>
     </div>
 </div>

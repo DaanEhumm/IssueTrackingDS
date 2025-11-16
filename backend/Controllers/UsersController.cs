@@ -86,6 +86,39 @@ namespace IssueTrackingDS.Controllers
                 user.Role
             });
         }
+        // ============================
+        // CREATE ADMIN (SECURE MANUAL)
+        // ============================
+        [HttpPost("create-admin")]
+        public async Task<IActionResult> CreateAdmin([FromQuery] string key, [FromBody] UserRegisterRequest req)
+        {
+        //  Alleen jij kent deze key
+            if (key != "BeveiligingAdminAccountTest123")
+            return Unauthorized("Ongeldige sleutel.");
+
+            if (await _context.Users.AnyAsync(u => u.Username == req.Username))
+            return BadRequest("Username bestaat al.");
+
+#pragma warning disable CS8604 // Possible null reference argument.
+            var admin = new User
+        {
+        Username = req.Username,
+        PasswordHash = HashPassword(req.Password),
+        Role = UserRole.admin
+        };
+#pragma warning restore CS8604 // Possible null reference argument.
+
+            _context.Users.Add(admin);
+            await _context.SaveChangesAsync();
+
+            return Ok(new
+    {
+        message = "Admin-account aangemaakt",
+        admin.UserID,
+        admin.Username,
+        admin.Role
+    });
+}
 
         // ============================
         // GET ALL USERS (ADMIN)
@@ -110,6 +143,9 @@ namespace IssueTrackingDS.Controllers
             return Ok(user);
         }
     }
+
+
+
 
     // DTO classes
     public class UserRegisterRequest
